@@ -126,7 +126,7 @@ export { affiliateConfig, affiliateLinks };
     // 有料記事設定（AI稼ぎ方.mdの価格帯に寄せる）
     const paidEnabled = true; // 有料記事にするか
     // 価格をランダムに選択（AI稼ぎ方.mdを参考にした価格帯）
-    const priceOptions = [1000, 1800, 2980];
+    const priceOptions = [1980, 2980, 3980];
     const price = priceOptions[Math.floor(Math.random() * priceOptions.length)];
     console.log(`選択された価格: ${price}円`);
 
