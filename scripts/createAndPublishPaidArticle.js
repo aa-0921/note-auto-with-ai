@@ -11,6 +11,12 @@ export { affiliateConfig, affiliateLinks };
 
 (async () => {
   await runWithCore(async ({ core, wantsBackground }) => {
+    // このスクリプトだけ異なるAIモデルを使用する
+    core.aiGenerator.models.article = 'tngtech/deepseek-r1t2-chimera:free';
+    core.aiGenerator.models.rewrite = 'tngtech/deepseek-r1t2-chimera:free';
+    core.aiGenerator.models.tags = 'tngtech/deepseek-r1t2-chimera:free';
+    console.log('使用するAIモデル:', core.aiGenerator.models);
+
     // アカウント固有の題材・切り口（ここで管理）
     // 「AI稼ぎ方.md」で扱っているテーマを中心に構成
     const topics = [
