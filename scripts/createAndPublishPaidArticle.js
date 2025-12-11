@@ -6,6 +6,9 @@ import { runWithCore } from '@aa-0921/note-auto-core';
 // アフィリエイト設定とリンクを別ファイルから読み込み
 import { affiliateConfig, affiliateLinks } from './affiliateConfig.js';
 
+// 記事内容配列（A）を読み込み
+import articleContents from './articleContents.js';
+
 // 再エクスポート（他のファイルから参照できるように）
 export { affiliateConfig, affiliateLinks };
 
@@ -231,9 +234,16 @@ export { affiliateConfig, affiliateLinks };
     const price = priceOptions[Math.floor(Math.random() * priceOptions.length)];
     console.log(`選択された価格: ${price}円`);
 
+    // 記事内容配列（A）が存在するかチェック
+    const articleContentsArray = Array.isArray(articleContents) && articleContents.length > 0
+      ? articleContents
+      : undefined;
+
     // 記事の自動生成と有料記事としての投稿機能を実行
     await core.runCreateAndPublishPaidArticle({
       background: wantsBackground,
+      // 記事内容配列（A）が存在する場合はそれを渡す（存在しない場合は topics と patterns を使用）
+      articleContents: articleContentsArray,
       topics,
       patterns,
       paidEnabled,
