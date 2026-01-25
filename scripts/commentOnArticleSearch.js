@@ -30,6 +30,10 @@ import { runWithCore } from '@aa-0921/note-auto-core';
     
     // 動作テストのため、一旦1回に
     const maxComments = 5;  // 例: 5
+
+    // コメントの先頭/末尾に付ける固定文（必要に応じてここを編集してください）
+    const commentPrefix = 'コメント失礼します🤖フォロー・スキもさせていただきました💡';
+    const commentSuffix = 'ぜひ私の記事にもコメント・フォロー・スキをいただけますと、大変励みになります🙇';
     
     // コメント生成用のプロンプト（オプション、指定しない場合はデフォルトを使用）
     // プロンプト内で以下の変数を使用可能: {{title}}, {{headings}}, {{articleText}}
@@ -47,8 +51,7 @@ import { runWithCore } from '@aa-0921/note-auto-core';
 - 共感を示す表現（「なるほど」「確かに」「参考になります」など）を自然に使ってください
 - 丁寧さを保ちつつ、カジュアルで読みやすい表現を混ぜてください
 - 過度に感情的な表現は避け、簡潔で要点を押さえたコメントを心がけてください
-- コメントの最初に必ず「コメント失礼します🤖フォロー・スキもさせていただきました💡」を追加してください
-- コメントの最後に必ず「ぜひコメントをいただけますと、大変励みになります」を追加してください`;
+`;
 
     // ベースシステムメッセージに追加するメッセージ（オプション）
     // 例：アカウントの属性（年齢、性別など）を指定
@@ -71,7 +74,10 @@ import { runWithCore } from '@aa-0921/note-auto-core';
       commentPrompt: commentPrompt,
       commentSystemMessage: commentSystemMessage,
       additionalPrompt: additionalPrompt,
-      additionalSystemMessage: additionalSystemMessage
+      additionalSystemMessage: additionalSystemMessage,
+      // AI生成本文の前後に固定文を付与（core側で付与）
+      commentPrefix: commentPrefix,
+      commentSuffix: commentSuffix
     };
     
     // 記事検索とコメント投稿を実行
