@@ -1,14 +1,14 @@
 name: Auto Post Article Link List To Note
 
 on:
-  schedule:
+  # schedule:
     # 毎日10:30, 12:30, 19:30（JST）に実行
     # JST = UTC + 9時間
     
     # このアカウントは有料なので一旦停止
-    - cron: '30 9 * * *'   # JST 10:30 = UTC 1:30
-    - cron: '30 11 * * *'   # JST 12:30 = UTC 3:30
-    - cron: '30 18 * * *'  # JST 19:30 = UTC 10:30
+    # - cron: '30 9 * * *'   # JST 10:30 = UTC 1:30
+    # - cron: '30 11 * * *'   # JST 12:30 = UTC 3:30
+    # - cron: '30 18 * * *'  # JST 19:30 = UTC 10:30
   workflow_dispatch:
 
 jobs:
